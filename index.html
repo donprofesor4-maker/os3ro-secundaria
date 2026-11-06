@@ -85,7 +85,7 @@ const textOK=d=>d.length>=10&&d.every((s,i)=>words(s.text)>=(i===0?2:8)&&words(s
 const slideText=(term,min=12,max=65)=>{const s=findSlide(term);return !!s&&words(s.text)>=min&&words(s.text)<=max;};
 const resourceFiles=()=>subfolder('Recursos')?children(subfolder('Recursos').id).filter(f=>f.type==='image'):[];
 const fourImages=()=>deck().filter(s=>s.images.length>0).length>=4;
-const placedImages=()=>deck().filter(s=>s.images.some(i=>i.width>=15&&i.width<=38&&i.width!==28&&i.x>=52&&i.x+i.width<=98&&i.y>=30&&i.y+i.width*4/3<=94)).length>=4;
+const placedImages=()=>deck().filter(s=>s.images.some(i=>i.width>=15&&i.width<=38&&i.width!==28&&(i.x!==55||i.y!==35)&&i.x>=52&&i.x+i.width<=98&&i.y>=30&&i.y+i.width*4/3<=94)).length>=4;
 const missions=[
 {title:'Abre Documentos',txt:'Haz doble clic en <b>Explorador</b>. Después abre la carpeta <b>Documentos</b> con doble clic.',test:()=>(since('folder',e=>e.id==='docs')),hint:'Abre el Explorador del escritorio y después Documentos. No basta seleccionar la carpeta.'},
 {title:'Crea la carpeta del proyecto',txt:'Dentro de Documentos, pulsa <b>Nueva carpeta</b>. Escribe <b>Foro IA</b> y guarda.',test:()=>(!!project()),hint:'Comprueba que Foro IA quede dentro de Documentos.'},
